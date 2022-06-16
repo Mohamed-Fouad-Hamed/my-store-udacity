@@ -1,0 +1,61 @@
+.header {
+    text-align: center;
+    background: #33B5E5;
+    color: #fff;
+    position: fixed;
+    padding-bottom: 3px;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .shopping-container-header{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 25px;
+    position: absolute ;
+    top: 21px;
+    left:calc(100% - 125px);
+  }
+
+  .shop-icon {
+    display: inline-block ;
+    width:30px; 
+    height:30px;
+    position: relative;
+  }
+  
+.shop-icon-count{
+    background-color:rgb(255, 115, 0);
+    color: #ffffff;
+    text-align: center;
+    font-size:x-small;
+    position: absolute;
+    padding:1px;
+    top: -13px;
+    left: 13px;
+    width: 17px;
+    height: 17px;
+    border-radius: 25px;
+}
+ 
+.amount{
+    display: inline-block;
+    font-size:15px;
+    color: #ffffff;
+    width:90px; 
+    height:15px;
+    top: -10px;
+    position: relative;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+

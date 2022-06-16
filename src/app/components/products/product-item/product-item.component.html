@@ -1,0 +1,12 @@
+<div class="product-container">
+    <a  [routerLink] ="['/product-details']" [queryParams]="product" >
+        <img class="product-image"  [src]="product.url" alt="Image Product"/>
+    </a>   
+    <p><strong>{{ product.name }}</strong></p>
+    <p><strong><span>$</span>{{ product.price }}</strong></p> 
+    <select class="select-input"  #quanvalue >
+        <option  value="1" selected>1</option> 
+        <option *ngFor="let item  of counterArray(100) " [value]="item" >{{ item }}</option>
+    </select>
+    <button class="select-input"  mat-raised-button color="primary" (click)="addNew(+quanvalue.value)">Add to cart</button>
+</div>    

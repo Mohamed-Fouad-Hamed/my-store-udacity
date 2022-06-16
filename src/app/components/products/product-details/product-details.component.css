@@ -1,0 +1,43 @@
+img {
+    border-radius: 10px;
+    width: 320px;
+  }
+  
+  a {
+    color:blue;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .select-input {
+    width: 108px; 
+    margin-bottom: 8px;
+  }
+  
+  .detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    padding-top: 55px;
+  }
+  
+  .detail-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 128px;
+    margin-right: 128px;
+  }
+  
+  .back-link {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .center{
+    display: block;
+    margin: auto;
+  }

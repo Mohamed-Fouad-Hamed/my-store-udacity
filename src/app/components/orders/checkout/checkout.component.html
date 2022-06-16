@@ -1,0 +1,96 @@
+<div *ngIf=" order.countProducts() === 0 " class="empty-cart-message">
+    <h1>
+        Empty Shopping Cart
+    </h1>
+    <a  class="back-link" [routerLink]="['/']" > &#x2190; Back to product list </a>
+</div>
+<div *ngIf=" order.countProducts() > 0 " class="cart-container">
+
+    <div  class="card-item-details">
+        <div *ngFor="let detail of order.orderDetail" class="cart-item" >
+            
+                    <div class="cart-panel" >
+                        <img   [src]="detail.url" alt="Image Product"/>
+                    </div>
+                    <div class="cart-panel info-item" >   
+                        <p><strong>{{ detail.productName }}</strong></p>
+                        <p><strong><span>$</span>{{ detail.price }}</strong></p> 
+                        <input  class="number-input" (change)="updateDetail(detail , +quanvalue.value)"  type="number" [value] ="detail.quantity"  #quanvalue>
+                    </div> 
+            
+        </div>
+        <hr/>
+        <p class="total-order" > Total : <span>$</span><span> {{ order.totalOrder().toFixed(2) }}</span></p> 
+    </div>
+      
+      <form class="form-data-checkout" name="form"  (ngSubmit)="onSubmit()" #f="ngForm"  autocomplete="off" >
+       
+        <mat-form-field class="input-checkout"  appearance="fill">
+            <mat-label> Full Name </mat-label>
+            <input matInput type="text"
+            name="fullname"
+            [(ngModel)]="order.fullName"
+            required
+            #fullname="ngModel"
+            placeholder=" ( minimum 3 charaters ) "
+            minlength="3"
+            autofocus>
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="fullname.hasError('minlength') && !fullname.hasError('required')">
+              Please enter full name <strong> minimum 3 charaters </strong>
+            </mat-error>
+            <mat-error *ngIf="fullname.hasError('required')">
+              Full name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="input-checkout"  appearance="fill">
+            <mat-label> Address </mat-label>
+            <input  matInput type="text"
+                name="address"
+                [(ngModel)]="order.address"
+                placeholder="( minimum 6 charaters )"
+                minlength="6"
+                required
+                #address="ngModel" 
+                >
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="address.hasError('minlength') && !address.hasError('required')">
+              Please enter address <strong> minimum 6 charaters </strong>
+            </mat-error>
+            <mat-error *ngIf="address.hasError('required')">
+                Address name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="input-checkout"  appearance="fill">
+            <mat-label> Credit Card Number </mat-label>
+            <input  matInput type="text"
+                name="creditcard"
+                [(ngModel)]="order.creditCard"
+                placeholder="(16-digital number)"
+                minlength="16"
+                required
+                #creditcard="ngModel">
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="creditcard.hasError('minlength') && !creditcard.hasError('required')">
+              Please enter Credit card number <strong> minimum 16 charaters </strong>
+            </mat-error>
+            <mat-error *ngIf="creditcard.hasError('required')">
+                Credit card number is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-hint  >We'll never share your payment details with anyone else .</mat-hint>
+        <button class="submit-button"  type="submit" mat-raised-button color="primary" [disabled]="f.invalid">
+            Submit
+        </button> 
+
+    </form>
+
+</div>  
+  
+  
+  
+  
+ 

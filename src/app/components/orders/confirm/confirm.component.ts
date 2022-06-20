@@ -25,7 +25,7 @@ export class ConfirmComponent implements OnInit {
   resetOrder(){
   
     this.orderService.resetService();
-    this.router.navigate(['']);
+    this.router.navigate(['/store']);
   }
 
 }

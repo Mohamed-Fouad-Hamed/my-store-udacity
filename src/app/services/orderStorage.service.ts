@@ -16,7 +16,7 @@ the browser and reopen it to find what you have purchased in your cart.
 Note: 
 This data is reset in the event of confirmation of purchase or logout  
  */
-export class LocalstorageService {
+export class OrderStorageService {
 
   private orderKey : string = 'order';
 

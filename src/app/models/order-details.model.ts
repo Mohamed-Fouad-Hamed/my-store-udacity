@@ -1,4 +1,8 @@
-export class OrderDetails {
+
+
+export class OrderDetails  {
+    
+
     id!:number;
     productid!:number;
     productName!:string;
@@ -19,11 +23,6 @@ export class OrderDetails {
                     this.price  = _price ;
                     this.quantity = _quantity;
                     this.url = _url ;
-                    this.totalOrderDetail();
                  }
-
-    totalOrderDetail():void{
-        this.totalProduct = this.quantity * this.price ;
-    }
 
 }

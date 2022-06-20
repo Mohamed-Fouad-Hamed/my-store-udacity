@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { HomeModule } from './modules/home/home.module';
 import { ProductsModule } from './modules/products/products.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { MaterialUiComponentsModule } from './modules/material-ui-components/material-ui-components.module';
+import { UsersModule } from './modules/users/users.module';
+import { FirebaseModule } from './modules/firebase/firebase.module';
+import { AuthService } from 'src/app/services/auth.service';
 
-import { ListProductsService } from './services/list-products-service.service';
 
 
 @NgModule({
@@ -27,9 +28,11 @@ import { ListProductsService } from './services/list-products-service.service';
     HomeModule, 
     ProductsModule,
     OrdersModule,
-    MaterialUiComponentsModule
+    UsersModule ,
+    MaterialUiComponentsModule,
+    FirebaseModule
   ],
-  providers: [ListProductsService],
+  providers: [ AuthService ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })

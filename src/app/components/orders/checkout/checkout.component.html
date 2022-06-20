@@ -1,12 +1,13 @@
-<div *ngIf=" order.countProducts() === 0 " class="empty-cart-message">
+<div *ngIf=" helper.countProducts() === 0 " class="empty-cart-message">
     <h1>
         Empty Shopping Cart
     </h1>
-    <a  class="back-link" [routerLink]="['/']" > &#x2190; Back to product list </a>
+    <a  class="back-link" [routerLink]="['/store']" > &#x2190; Back to product list </a>
 </div>
-<div *ngIf=" order.countProducts() > 0 " class="cart-container">
+<div *ngIf=" helper.countProducts() > 0 " class="cart-container">
 
     <div  class="card-item-details">
+        
         <div *ngFor="let detail of order.orderDetail" class="cart-item" >
             
                     <div class="cart-panel" >
@@ -15,12 +16,12 @@
                     <div class="cart-panel info-item" >   
                         <p><strong>{{ detail.productName }}</strong></p>
                         <p><strong><span>$</span>{{ detail.price }}</strong></p> 
-                        <input  class="number-input" (change)="updateDetail(detail , +quanvalue.value)"  type="number" [value] ="detail.quantity"  #quanvalue>
+                        <input  class="number-input" (change)="updateDetail( detail , +quanvalue.value)"  type="number" [value] ="detail.quantity"  #quanvalue>
                     </div> 
             
         </div>
         <hr/>
-        <p class="total-order" > Total : <span>$</span><span> {{ order.totalOrder().toFixed(2) }}</span></p> 
+        <p class="total-order" > Total : <span>$</span><span> {{ helper.totalOrder().toFixed(2) }}</span></p> 
     </div>
       
       <form class="form-data-checkout" name="form"  (ngSubmit)="onSubmit()" #f="ngForm"  autocomplete="off" >
@@ -29,7 +30,8 @@
             <mat-label> Full Name </mat-label>
             <input matInput type="text"
             name="fullname"
-            [(ngModel)]="order.fullName"
+            [ngModel]="order.fullName"
+            (ngModelChange)="fullNameChanged($event)"
             required
             #fullname="ngModel"
             placeholder=" ( minimum 3 charaters ) "
@@ -48,7 +50,8 @@
             <mat-label> Address </mat-label>
             <input  matInput type="text"
                 name="address"
-                [(ngModel)]="order.address"
+                [ngModel]="order.address"
+                (ngModelChange)="addressChanged($event)"
                 placeholder="( minimum 6 charaters )"
                 minlength="6"
                 required
@@ -67,17 +70,19 @@
             <mat-label> Credit Card Number </mat-label>
             <input  matInput type="text"
                 name="creditcard"
-                [(ngModel)]="order.creditCard"
-                placeholder="(16-digital number)"
-                minlength="16"
+                [ngModel]="order.creditCard"
+                (ngModelChange)="creditCardNumberChanged($event)"
+                placeholder="(16-digit number)"
+                maxlength="16"
                 required
+                pattern= "[0-9]{16}"
                 #creditcard="ngModel">
             <mat-hint></mat-hint>
-            <mat-error *ngIf="creditcard.hasError('minlength') && !creditcard.hasError('required')">
-              Please enter Credit card number <strong> minimum 16 charaters </strong>
-            </mat-error>
             <mat-error *ngIf="creditcard.hasError('required')">
                 Credit card number is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="creditcard.hasError('pattern')">
+                Credit card number <strong>must be only number and 16-digit</strong>
             </mat-error>
         </mat-form-field>
         

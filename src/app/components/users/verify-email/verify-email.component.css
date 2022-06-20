@@ -1,0 +1,30 @@
+.form-items{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 2.5;
+    margin-top:  calc(15% - 175px );
+    margin-left: 25px ;
+  }
+  
+  .input-verify{
+    padding-bottom: 5px;
+    width:400px;
+  }
+  
+  .verify-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .together-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .together-item{
+    margin-right: 5px;
+  }
+

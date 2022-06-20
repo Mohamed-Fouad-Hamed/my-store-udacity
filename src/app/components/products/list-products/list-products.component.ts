@@ -1,6 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { ListProductsService } from 'src/app/services/list-products-service.service';
 import { Product } from 'src/app/models/product.model';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-list-products',
@@ -11,10 +12,9 @@ export class ListProductsComponent implements OnInit {
 
   listProducts : Product[] ;
 
-  constructor (private _service : ListProductsService) {
-
+  constructor (private _service : ListProductsService ,
+               private notificationService : NotificationService ) {
     this.listProducts = [];
-
   }
 
   ngOnInit(): void {
@@ -35,6 +35,8 @@ export class ListProductsComponent implements OnInit {
             );
   }
     
-  
+  invokeMessage(message:string){
+    this.notificationService.success(message);
+  }
 
 }

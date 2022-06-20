@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/order.model';
-import { Product } from '../models/product.model';
 import { BehaviorSubject ,Observable } from 'rxjs';
-import { ConfigurableFocusTrap } from '@angular/cdk/a11y';
+import { LocalstorageService } from './localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,9 @@ export class OrderService {
 
   private _order$! : Observable<Order>;
 
-  constructor() {
-    this._orderInfo  = new BehaviorSubject<Order>( new Order() );
+  constructor( private localStorgeService : LocalstorageService) {
+    const order : Order = this.localStorgeService.getOrder();
+    this._orderInfo  = new BehaviorSubject<Order>( order );
     this._order$ = this._orderInfo.asObservable();
    }
 
@@ -23,12 +23,12 @@ export class OrderService {
   }
 
   setOrder(latestValue:Order){
+    this.localStorgeService.setOrder(latestValue);
     this._orderInfo.next(latestValue);
   }
 
-  
-
   resetService():void{
+    this.localStorgeService.resetOrder();
     this.setOrder(new Order());
   }
 

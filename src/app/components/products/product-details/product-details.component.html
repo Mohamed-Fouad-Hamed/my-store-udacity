@@ -9,6 +9,6 @@
             <option *ngFor="let item  of counterArray(100) " [value]="item" >{{ item }}</option>
         </select>
         <button class="select-input"  mat-raised-button color="primary" (click)="addNew(+quanvalue.value)">Add to cart</button>
-        <a  class="back-link" [routerLink]="['/']" > &#x2190; Back to product list </a>
+        <a  class="back-link" [routerLink]="['/store']" > &#x2190; Back to product list </a>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <ul class="product-index">
     <li class="product-container" *ngFor="let product of listProducts">
-        <app-product-item [product]="product"></app-product-item>
+        <app-product-item [product]="product" (eventEmitterMessage)="invokeMessage($event)"></app-product-item>
     </li>
 </ul>

@@ -1,0 +1,34 @@
+a{
+    text-decoration: none;
+}
+
+.form-items{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 2.5;
+    margin-top:  25px;
+    margin-left: 25px ;
+  }
+  
+  .input-signin{
+    padding-bottom: 5px;
+    width:400px;
+  }
+  
+  .signin-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    max-height: 400px;
+  }
+
+  .together-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .together-item{
+    margin-right: 5px;
+  }

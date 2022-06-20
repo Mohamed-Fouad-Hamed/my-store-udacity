@@ -1,6 +1,11 @@
 # Mystore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+This project aims to make shopping easier and more flexible to become more interesting.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0. was chosen because it is the most advanced version at the present time, and the strong performance and speed of the single-page application provided by the framework.
+Looking forward to making this application more powerful, we have to add some advantages to it : -
+1- Controlling the delivery process and canceling purchase orders and returns
+2- Create and configure an easy search process linked to the results.
+3- Work to raise the level of security in order to preserve customer data and the reputation of the application.
 
 ## use npm
 

@@ -2,7 +2,7 @@
         <div class="confirmation-items">
             <h1 class="confirmation-header"> Success!</h1>
             <p class="confirmation-item">Thank you,{{ order.fullName }}!</p>
-            <p class="confirmation-item">Your $ {{ order.totalOrder().toFixed(2) }} order is confirmed!</p>
+            <p class="confirmation-item">Your $ {{ helper.totalOrder().toFixed(2) }} order is confirmed!</p>
             <p class="confirmation-item">Please allow 1-3 business day(s) for shopping</p>
             <button class="confirmation-item" (click)="resetOrder()"  mat-raised-button color="primary"  > &#x2190; Back to product list </button>
         </div>

@@ -8,5 +8,7 @@
         <option  value="1" selected>1</option> 
         <option *ngFor="let item  of counterArray(100) " [value]="item" >{{ item }}</option>
     </select>
-    <button class="select-input"  mat-raised-button color="primary" (click)="addNew(+quanvalue.value)">Add to cart</button>
+    <button class="select-input"  mat-raised-button color="primary" (click)="addNew(+quanvalue.value)">
+        Add to cart 
+    </button>
 </div>    

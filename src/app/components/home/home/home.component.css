@@ -17,13 +17,19 @@
     padding-right: 10px;
   }
 
+  .title-container {
+    display:  inline-block ;
+    text-align: center;
+  }
+
   .shopping-container-header{
-    display: inline-block;
+    display:inline-block;
     margin-left: auto;
     margin-right: 25px;
     position: absolute ;
     top: 21px;
     left:calc(100% - 125px);
+  
   }
 
   .shop-icon {
@@ -59,3 +65,36 @@
     padding-left: 15px;
 }
 
+.user-container{
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: auto;
+  position: absolute ;
+  top: 10px;
+  left : 5px;
+}
+
+.image-user{
+  width: 40px;
+  height: 40px;
+}
+
+.rounded-circle {
+  height: 40px;
+  width: 40px;
+  background-color: #bbb;
+  border-radius: 50%;
+}
+
+.name-user{
+  text-align: right;
+}
+
+.menu-container{
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: auto;
+  position: absolute ;
+  top: 10px;
+  right : calc(100% - 40px);
+}

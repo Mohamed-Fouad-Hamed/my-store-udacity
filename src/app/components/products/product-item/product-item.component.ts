@@ -1,9 +1,10 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../../models/product.model';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/order.model';
 import { DatastructureService } from 'src/app/services/datastructure.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { OrderHelper } from 'src/app/models/order-helper';
 
 
 @Component({
@@ -16,34 +17,42 @@ export class ProductItemComponent implements OnInit {
   
   @Input() product!: Product;
 
+  @Output() eventEmitterMessage : EventEmitter<string> = new EventEmitter();
+
   private order! : Order ;
 
+  private helper! : OrderHelper ;
+
   constructor(private orderService : OrderService ,
-              private dataStructure : DatastructureService ,
-              private notificationService : NotificationService) {
+              private dataStructure : DatastructureService ) {
     
    }
 
   ngOnInit(): void {
     this.orderService.getOrder().subscribe( order => this.order = order ); 
-  }
-
-
-  addNew(quantity:number){
-    this.order.addProduct( this.product.id ,
-                           this.product.name ,
-                           this.product.price ,
-                           quantity ,
-                           this.product.url  );
-    this.orderService.setOrder(this.order);
-    const productValue:number = this.product.price * quantity ;
-    const message : string ='Added to cart '+ `${quantity}` +' as value : '+ `${productValue.toFixed(2)}` +' total order : '+`${this.order.totalOrder().toFixed(2)}`;
-     //window.alert(message);
-     this.notificationService.success(message);                       
+    this.helper = new OrderHelper(this.order);
   }
 
   counterArray = (i:number) =>{
     return this.dataStructure.counter(i);
   }
+
+  addNew(quantity:number){
+
+    const message : string = this.helper.addProduct( this.product.id ,
+                                                    this.product.name ,
+                                                    this.product.price ,
+                                                    quantity ,
+                                                    this.product.url  );
+
+    this.orderService.setOrder(this.order);
+
+    this.eventEmitterMessage.emit(message); 
+
+  }
+
+ 
   
+  
+
 }
